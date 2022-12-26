@@ -1,0 +1,48 @@
+.__rootcon {
+  width: 60%;
+  margin-inline: auto;
+}
+
+#challenge__word {
+  padding: 200px 0;
+  border-bottom: 2px cyan solid;
+  text-align: center;
+}
+
+#challenge__word h2 {
+  text-align: center;
+  font-size: 3rem;
+}
+
+#challenge__word p {
+  text-align: center;
+  font-size: 2rem;
+  margin-block: 10px;
+}
+
+#challenge__word a {
+  margin-top: 40px;
+  padding: 10px 20px;
+  border-radius: 4px;
+
+  transition: all 0.4s;
+}
+
+#get__started {
+  background-color: var(--accent-color);
+}
+
+#get__started:hover {
+  background-color: var(--accent-color-light);
+}
+
+#__intro__section {
+  text-align: center;
+}
+
+#__intro__section p {
+  font-size: 1.4rem;
+  font-weight: 300;
+
+  line-height: 40px;
+}
