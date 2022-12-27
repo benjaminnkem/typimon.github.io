@@ -19,9 +19,9 @@ function typimonCode(data) {
 
   randWordDisplay.text(generatedWord);
 
-  $("#refresh__btn").on("click", () => {
-    randWordDisplay.text(generatedWord);
-  });
+  // $("#refresh__btn").on("click", () => {
+  //   randWordDisplay.text(generatedWord);
+  // });
 
   let gottenWord = "";
 
@@ -84,8 +84,6 @@ function typimonCode(data) {
 let numOfClicks = 0;
 $("#start__btn").on("click", () => {
   // The countdown
-
-  // To prevent the countr from reaching -1
   if (!((numOfClicks += 1) > 1)) {
     let counter = 3;
     $("#countdown").text(counter);
@@ -100,6 +98,43 @@ $("#start__btn").on("click", () => {
       }
     }, 1000);
 
-    setTimeout(() => getWordData(), 3000);
+    setTimeout(() => {
+      getWordData(); // Fetching the word data
+      timeManager(); // Time Management function fired when start button is clicked
+
+      // Making player finish button enabled
+      const finishBtn = document.querySelector("#finish__btn");
+      finishBtn.removeAttribute("disabled");
+    }, 3000);
   }
 });
+
+function timeManager() {
+  const secDisplay = $("#sec__display");
+  const minDisplay = $("#min__display");
+
+  let secondsCounter = 0;
+  let minutesCounter = 0;
+
+  setInterval(() => {
+    if (secondsCounter < 10) {
+      secDisplay.text(`0${secondsCounter}`);
+    } else {
+      secDisplay.text(`${secondsCounter}`);
+    }
+
+    if (secondsCounter >= 59) {
+      secondsCounter = -1;
+
+      // Minute handling section
+      minutesCounter++;
+      if (minutesCounter < 10) {
+        minDisplay.text(`0${minutesCounter}`);
+      } else {
+        minDisplay.text(`${minutesCounter}`);
+      }
+    }
+
+    secondsCounter++;
+  }, 1000);
+}
