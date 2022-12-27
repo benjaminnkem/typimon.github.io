@@ -4,18 +4,17 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/css/shared.css" />
-    <link rel="stylesheet" href="/css/play.css" />
-    <link rel="stylesheet" href="/dist/output.css">
+    <link rel="stylesheet" href="css/shared.css" />
+    <link rel="stylesheet" href="css/play.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap"
       rel="stylesheet"
     />
-    <script src="/js/test.js" defer></script>
-    <script src="/node_modules/jquery/dist/jquery.js" defer></script>
-    <script src="/js/play.js" defer></script>
+    <script src="js/test.js" defer></script>
+    <script src="js/jquery-3.6.3.js" defer></script>
+    <script src="js/play.js" defer></script>
     <title>Typimon - Practice</title>
   </head>
   <body>
@@ -45,9 +44,8 @@
             </p>
 
             <div id="play__time">
-              <span>00:00</span>
               <button id="start__btn">Start</button>
-              <button id="refresh__btn">Refresh</button>
+              <!-- <button id="refresh__btn">Refresh</button> -->
             </div>
 
             <div style="margin-top: 20px">
@@ -109,7 +107,9 @@
           </div>
           <div>
             <h3>Time Elapsed</h3>
-            <p id="time-displayer"><span>00</span> : <span>00</span></p>
+            <p id="time-displayer">
+              <span id="min__display">00</span> : <span id="sec__display">00</span>
+            </p>
           </div>
           <div id="slider-box">
             <h3>Adjust Typing Speed</h3>
@@ -118,10 +118,11 @@
               name="typimonSpeed"
               id="typimonSpeed"
               min="0"
-              max="1000"
+              max="900"
               step="100"
-              value="10"
+              value="300"
             />
+            <p>WPM: <span id="wpm__text">--</span></p>
           </div>
         </aside>
       </div>

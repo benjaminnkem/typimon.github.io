@@ -19,24 +19,35 @@ function typimonCode(data) {
 
   randWordDisplay.text(generatedWord);
 
-  $("#refresh__btn").on("click", () => {
-    randWordDisplay.text(generatedWord);
-  });
+  // $("#refresh__btn").on("click", () => {
+  //   randWordDisplay.text(generatedWord);
+  // });
 
   let gottenWord = "";
-
-  let speed = 200;
   let typimonLimitCount = 0;
   let textIndex = 0;
 
   // Game variable
   let typimonFinished = false;
-  let playerFinished = false;
 
-  // Trying to give palyers a time t9 get ready
+  // Slider section that controls the speed variable
+  const speedSlider = document.getElementById("typimonSpeed");
+
+  let speed = 1000 - speedSlider.value;
+  let wpm = (1000 / speed) * 60;
+
+  // Trying to give palyers a time to get ready
+
+  let testSpeed = 5000;
   setTimeout(() => {
-    // Main bot code
-    setInterval(() => {
+    function mainBotFunction() {
+      /* To make the speed value dynamic, 
+       the interval is to be cleared and resinitialized in every iteration: benjee remember!!!!!
+      */
+      clearInterval(speedUp__);
+
+      testSpeed *= 0.5;
+      // Main typimon code
       if (typimonLimitCount < generatedWord.length) {
         if (!(textIndex === generatedWord.length)) {
           gottenWord += generatedWord[textIndex];
@@ -52,18 +63,24 @@ function typimonCode(data) {
           typimonFinished = true;
         }
       }
-    }, speed);
+
+      speed = 1000 - speedSlider.value;
+      wpm = (1000 / speed) * 60;
+
+      $("#wpm__text").text(Math.round(wpm));
+
+      speedUp__ = setInterval(mainBotFunction, speed);
+    }
+
+    let speedUp__ = setInterval(mainBotFunction, speed);
   }, 1000);
 
-  // Checking Player input if it matches the generated word based on the index range
+  // Checking Player input if it matches the generated word based on the sliced range
   function checkPlayerError() {
     const playerInput = document.querySelector("#playerInput");
     playerInput.setAttribute("maxlength", generatedWord.length);
     playerInput.addEventListener("input", () => {
       const indexOfGeneratedWord = generatedWord.slice(0, playerInput.value.length);
-
-      // console.log("Generated:" + indexOfGeneratedWord);
-      // console.log("Player:" + playerInput.value);
 
       if (playerInput.value.toLowerCase() === indexOfGeneratedWord.toLowerCase()) {
         $("#status-box").removeClass("playerError");
@@ -84,8 +101,6 @@ function typimonCode(data) {
 let numOfClicks = 0;
 $("#start__btn").on("click", () => {
   // The countdown
-
-  // To prevent the countr from reaching -1
   if (!((numOfClicks += 1) > 1)) {
     let counter = 3;
     $("#countdown").text(counter);
@@ -100,6 +115,43 @@ $("#start__btn").on("click", () => {
       }
     }, 1000);
 
-    setTimeout(() => getWordData(), 3000);
+    setTimeout(() => {
+      getWordData(); // Fetching the word data
+      timeManager(); // Time Management function fired when start button is clicked
+
+      // Making player finish button enabled
+      const finishBtn = document.querySelector("#finish__btn");
+      finishBtn.removeAttribute("disabled");
+    }, 3000);
   }
 });
+
+function timeManager() {
+  const secDisplay = $("#sec__display");
+  const minDisplay = $("#min__display");
+
+  let secondsCounter = 0;
+  let minutesCounter = 0;
+
+  setInterval(() => {
+    if (secondsCounter < 10) {
+      secDisplay.text(`0${secondsCounter}`);
+    } else {
+      secDisplay.text(`${secondsCounter}`);
+    }
+
+    if (secondsCounter >= 59) {
+      secondsCounter = -1;
+
+      // Minute handling section
+      minutesCounter++;
+      if (minutesCounter < 10) {
+        minDisplay.text(`0${minutesCounter}`);
+      } else {
+        minDisplay.text(`${minutesCounter}`);
+      }
+    }
+
+    secondsCounter++;
+  }, 1000);
+}
