@@ -41,8 +41,11 @@ function typimonCode(data) {
   let testSpeed = 5000;
   setTimeout(() => {
     function mainBotFunction() {
+      /* To make the speed value dynamic, 
+       the interval is to be cleared and resinitialized in every iteration: benjee remember!!!!!
+      */
       clearInterval(speedUp__);
-      
+
       testSpeed *= 0.5;
       // Main typimon code
       if (typimonLimitCount < generatedWord.length) {
@@ -62,10 +65,11 @@ function typimonCode(data) {
       }
 
       speed = 1000 - speedSlider.value;
+      wpm = (1000 / speed) * 60;
+
       $("#wpm__text").text(Math.round(wpm));
 
       speedUp__ = setInterval(mainBotFunction, speed);
-      console.log(speed);
     }
 
     let speedUp__ = setInterval(mainBotFunction, speed);
@@ -77,9 +81,6 @@ function typimonCode(data) {
     playerInput.setAttribute("maxlength", generatedWord.length);
     playerInput.addEventListener("input", () => {
       const indexOfGeneratedWord = generatedWord.slice(0, playerInput.value.length);
-
-      // console.log("Generated:" + indexOfGeneratedWord);
-      // console.log("Player:" + playerInput.value);
 
       if (playerInput.value.toLowerCase() === indexOfGeneratedWord.toLowerCase()) {
         $("#status-box").removeClass("playerError");
