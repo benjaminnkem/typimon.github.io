@@ -24,18 +24,26 @@ function typimonCode(data) {
   // });
 
   let gottenWord = "";
-
-  let speed = 700;
-  let wpm = (1000 / speed) * 60;
   let typimonLimitCount = 0;
   let textIndex = 0;
 
   // Game variable
   let typimonFinished = false;
 
-  // Trying to give palyers a time t9 get ready
+  // Slider section that controls the speed variable
+  const speedSlider = document.getElementById("typimonSpeed");
+
+  let speed = 1000 - speedSlider.value;
+  let wpm = (1000 / speed) * 60;
+
+  // Trying to give palyers a time to get ready
+
+  let testSpeed = 5000;
   setTimeout(() => {
-    setInterval(() => {
+    function mainBotFunction() {
+      clearInterval(speedUp__);
+      
+      testSpeed *= 0.5;
       // Main typimon code
       if (typimonLimitCount < generatedWord.length) {
         if (!(textIndex === generatedWord.length)) {
@@ -53,9 +61,14 @@ function typimonCode(data) {
         }
       }
 
-      // Slider section that controls the speed variable
+      speed = 1000 - speedSlider.value;
       $("#wpm__text").text(Math.round(wpm));
-    }, speed);
+
+      speedUp__ = setInterval(mainBotFunction, speed);
+      console.log(speed);
+    }
+
+    let speedUp__ = setInterval(mainBotFunction, speed);
   }, 1000);
 
   // Checking Player input if it matches the generated word based on the sliced range
