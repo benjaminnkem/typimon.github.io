@@ -10,7 +10,7 @@
 body {
   background-color: var(--primary-background-color);
   color: var(--primary-text-color);
-  font-family: "Open sans", sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 * {
@@ -52,12 +52,14 @@ a {
   align-items: center;
 }
 
+
 .nav-links {
   margin-inline: 10px;
 }
 
 
 footer {
+  margin-top: 50px;
   text-align: center;
   font-size: .6rem;
   padding: 20px 0;

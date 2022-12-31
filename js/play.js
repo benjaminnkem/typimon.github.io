@@ -29,6 +29,9 @@ function typimonCode(data) {
 
   // Game variable
   let typimonFinished = false;
+  let playerFinished = false;
+  let numOfErrors = 0;
+  let winStatus;
 
   // Slider section that controls the speed variable
   const speedSlider = document.getElementById("typimonSpeed");
@@ -42,7 +45,7 @@ function typimonCode(data) {
   setTimeout(() => {
     function mainBotFunction() {
       /* To make the speed value dynamic, 
-       the interval is to be cleared and resinitialized in every iteration: benjee remember!!!!!
+       the interval is to be cleared and reinitialized in every iteration: benjee remember!!!!!
       */
       clearInterval(speedUp__);
 
@@ -53,15 +56,21 @@ function typimonCode(data) {
           gottenWord += generatedWord[textIndex];
           $("#__bot__type").text(gottenWord);
 
-          // Increementing limit count to avoid retyping
+          // Incrementing limit count to avoid retyping
           typimonLimitCount++;
           textIndex++;
         } else {
           gottenWord = "";
           textIndex = 0;
-
-          typimonFinished = true;
         }
+      } else {
+        // This part executes when typimon is done typing
+        typimonFinished = true;
+        winStatus = "You Lose!";
+
+        $("#finishedchallenge__con").addClass("playerFinished");
+        $("#win_stat").text(winStatus);
+        $("#error_stat").text(numOfErrors);
       }
 
       speed = 1000 - speedSlider.value;
@@ -75,6 +84,7 @@ function typimonCode(data) {
     let speedUp__ = setInterval(mainBotFunction, speed);
   }, 1000);
 
+  // Main Player part
   // Checking Player input if it matches the generated word based on the sliced range
   function checkPlayerError() {
     const playerInput = document.querySelector("#playerInput");
@@ -88,15 +98,43 @@ function typimonCode(data) {
         $("#status-text").text("Good");
       } else {
         // This gets executed when the player input don't match (ERROR)
+        numOfErrors++;
+
         $("#status-box").addClass("playerError");
         $("#status-text").css("color", "red");
         $("#status-text").text("Word Mismatch!");
+      }
+
+      if (playerInput.value.length == playerInput.getAttribute("maxlength")) {
+        // This part executes when typimon is done typing
+
+        // Making player finish button enabled
+        playerFinished = true;
+        const finishBtn = $("#finish__btn");
+
+        // This wont enable the button if typimon finishes first and matches given word
+        if (
+          !typimonFinished &&
+          playerInput.value.toLowerCase() === indexOfGeneratedWord.toLowerCase()
+        ) {
+          finishBtn.removeAttr("disabled");
+
+          finishBtn.on("click", () => {
+            winStatus = "You Win!";
+
+            $("#finishedchallenge__con").addClass("playerFinished");
+            $("#win_stat").text(winStatus);
+            $("#error_stat").text(numOfErrors);
+          });
+        }
       }
     });
   }
 
   checkPlayerError();
 }
+
+$("#restart__finish").on("click", () => location.reload());
 
 let numOfClicks = 0;
 $("#start__btn").on("click", () => {
@@ -118,10 +156,6 @@ $("#start__btn").on("click", () => {
     setTimeout(() => {
       getWordData(); // Fetching the word data
       timeManager(); // Time Management function fired when start button is clicked
-
-      // Making player finish button enabled
-      const finishBtn = document.querySelector("#finish__btn");
-      finishBtn.removeAttribute("disabled");
     }, 3000);
   }
 });

@@ -6,10 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/css/shared.css" />
     <link rel="stylesheet" href="/css/play.css" />
+    <link rel="stylesheet" href="/dist/output.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;600&display=swap"
       rel="stylesheet"
     />
     <script src="/js/test.js" defer></script>
@@ -124,6 +125,29 @@
             <p>WPM: <span id="wpm__text">--</span></p>
           </div>
         </aside>
+      </div>
+
+      <!-- Isolated -->
+      <div id="finishedchallenge__con">
+        <div id="finishedchallenge">
+          <div id="stats">
+            <div id="statsUserimg" style="text-align: center">
+              <img src="/images/follower.png" alt="User Image" width="100px" height="100px" />
+            </div>
+            <div id="stats__">
+              <p>Winner: <span id="win_stat"></span></p>
+              <p>Number of Errors: <span id="error_stat">5</span></p>
+              <p>Time Taken: <span id="time_stat">30</span></p>
+
+              <button
+                id="restart__finish"
+                class="bg-cyan-600 text-cyan-50 font-semibold px-2 py-1 rounded-md hover:bg-cyan-700"
+              >
+                Restart
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </main>
 
