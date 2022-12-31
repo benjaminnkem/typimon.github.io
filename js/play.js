@@ -66,11 +66,16 @@ function typimonCode(data) {
       } else {
         // This part executes when typimon is done typing
         typimonFinished = true;
-        winStatus = "You Lose!";
+        if (!playerFinished) {
+          winStatus = "You Lose!";
 
-        $("#finishedchallenge__con").addClass("playerFinished");
-        $("#win_stat").text(winStatus);
-        $("#error_stat").text(numOfErrors);
+          $("#playerInput").attr("disabled", "true");
+          $("#finishedchallenge__con").addClass("playerFinished");
+          $("#win_stat").text(winStatus);
+          $("#error_stat").text(numOfErrors);
+        } else {
+          return;
+        }
       }
 
       speed = 1000 - speedSlider.value;
@@ -125,6 +130,8 @@ function typimonCode(data) {
             $("#finishedchallenge__con").addClass("playerFinished");
             $("#win_stat").text(winStatus);
             $("#error_stat").text(numOfErrors);
+
+            playerInput.attr("disabled", "true");
           });
         }
       }
