@@ -195,6 +195,9 @@
 #statsUserimg {
   padding: 20px;
 }
+#statsUserimg img {
+  margin-inline: auto;
+}
 
 #stats__ > p {
   margin: 10px 0;

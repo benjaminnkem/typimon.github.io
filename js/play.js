@@ -1,3 +1,6 @@
+// Global variables
+let finished = false;
+
 async function getWordData() {
   const fetcher = fetch("/rand_data/random.json");
   const response = (await fetcher).json();
@@ -9,6 +12,43 @@ async function getWordData() {
     .catch((err) => {
       throw err;
     });
+}
+
+// Global time
+let secondsCounter = 0;
+let minutesCounter = 0;
+
+function timeManager() {
+  const secDisplay = $("#sec__display");
+  const minDisplay = $("#min__display");
+
+  // Bug Here: The time still counts even when the challenge ends
+  let timeManagerInterval;
+  if (!finished) {
+    timeManagerInterval = setInterval(() => {
+      if (secondsCounter < 10) {
+        secDisplay.text(`0${secondsCounter}`);
+      } else {
+        secDisplay.text(`${secondsCounter}`);
+      }
+
+      if (secondsCounter >= 59) {
+        secondsCounter = -1;
+
+        // Minute handling section
+        minutesCounter++;
+        if (minutesCounter < 10) {
+          minDisplay.text(`0${minutesCounter}`);
+        } else {
+          minDisplay.text(`${minutesCounter}`);
+        }
+      }
+
+      secondsCounter++;
+    }, 1000);
+  } else {
+    clearInterval(timeManagerInterval);
+  }
 }
 
 function typimonCode(data) {
@@ -68,11 +108,13 @@ function typimonCode(data) {
         typimonFinished = true;
         if (!playerFinished) {
           winStatus = "You Lose!";
+          finished = true;
 
           $("#playerInput").attr("disabled", "true");
           $("#finishedchallenge__con").addClass("playerFinished");
           $("#win_stat").text(winStatus);
           $("#error_stat").text(numOfErrors);
+          $("#time_stat").text(`${minutesCounter}mins ${secondsCounter}secs`);
         } else {
           return;
         }
@@ -126,12 +168,14 @@ function typimonCode(data) {
 
           finishBtn.on("click", () => {
             winStatus = "You Win!";
+            finished = true;
 
             $("#finishedchallenge__con").addClass("playerFinished");
             $("#win_stat").text(winStatus);
             $("#error_stat").text(numOfErrors);
+            $("#time_stat").text(`${minutesCounter}mins ${secondsCounter}secs`);
 
-            playerInput.attr("disabled", "true");
+            playerInput.setAttribute("disabled", "true");
           });
         }
       }
@@ -166,33 +210,3 @@ $("#start__btn").on("click", () => {
     }, 3000);
   }
 });
-
-function timeManager() {
-  const secDisplay = $("#sec__display");
-  const minDisplay = $("#min__display");
-
-  let secondsCounter = 0;
-  let minutesCounter = 0;
-
-  setInterval(() => {
-    if (secondsCounter < 10) {
-      secDisplay.text(`0${secondsCounter}`);
-    } else {
-      secDisplay.text(`${secondsCounter}`);
-    }
-
-    if (secondsCounter >= 59) {
-      secondsCounter = -1;
-
-      // Minute handling section
-      minutesCounter++;
-      if (minutesCounter < 10) {
-        minDisplay.text(`0${minutesCounter}`);
-      } else {
-        minDisplay.text(`${minutesCounter}`);
-      }
-    }
-
-    secondsCounter++;
-  }, 1000);
-}
