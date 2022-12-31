@@ -6,7 +6,7 @@ improves your typing skills and saves your highest score in the browser.
 let gottenWord = "";
 
 let goingForward = true;
-let speed = 50;
+let speed = 100;
 
 let textIndex = 0;
 
