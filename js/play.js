@@ -60,10 +60,6 @@ function typimonCode(data) {
 
   randWordDisplay.text(generatedWord);
 
-  // $("#refresh__btn").on("click", () => {
-  //   randWordDisplay.text(generatedWord);
-  // });
-
   let gottenWord = "";
   let typimonLimitCount = 0;
   let textIndex = 0;
@@ -124,7 +120,6 @@ function typimonCode(data) {
       wpm = (1000 / speed) * 60;
 
       $("#wpm__text").text(Math.round(wpm));
-
       speedUp__ = setInterval(mainBotFunction, speed);
     }
 
@@ -143,6 +138,9 @@ function typimonCode(data) {
         $("#status-box").removeClass("playerError");
         $("#status-text").css("color", "greenyellow");
         $("#status-text").text("Good");
+
+        $(".stat-indicator").text("✅")
+        $(".stat-indicator").removeClass("animate-bounce")
       } else {
         // This gets executed when the player input don't match (ERROR)
         numOfErrors++;
@@ -150,6 +148,10 @@ function typimonCode(data) {
         $("#status-box").addClass("playerError");
         $("#status-text").css("color", "red");
         $("#status-text").text("Word Mismatch!");
+
+        
+        $(".stat-indicator").addClass("animate-bounce")
+        $(".stat-indicator").text("❌")
       }
 
       if (playerInput.value.length == playerInput.getAttribute("maxlength")) {
@@ -186,6 +188,7 @@ $("#restart__finish").on("click", () => location.reload());
 
 let numOfClicks = 0;
 $("#start__btn").on("click", () => {
+  $("#start__btn").css("display", "none");
   // The countdown
   if (!((numOfClicks += 1) > 1)) {
     let counter = 3;

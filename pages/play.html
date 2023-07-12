@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Get Ready to battle Typimon">
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <meta name="description" content="Get Ready to battle Typimon" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="/css/shared.css" />
     <link rel="stylesheet" href="/css/play.css" />
     <link rel="stylesheet" href="/dist/output.css" />
@@ -21,9 +21,9 @@
 
           <nav id="navbar">
             <ul class="flex items-center md:space-x-4 space-x-2">
-              <li><a href="/" class="nav-links">Home</a></li>
-              <li><a href="/pages/play.html" class="nav-links">Play 🚀</a></li>
-              <li><a href="/pages/dev.html" class="nav-links">Developer ⚗</a></li>
+              <li><a href="/" class="md:text-base text-sm">Home</a></li>
+              <li><a href="/pages/play.html" class="md:text-base text-sm">Play 🚀</a></li>
+              <li><a href="/pages/dev.html" class="md:text-base text-sm">Developer ⚗</a></li>
             </ul>
           </nav>
         </div>
@@ -32,33 +32,40 @@
 
     <main>
       <div id="root" class="md:max-w-[1024px] w-11/12 mx-auto block md:grid gap-4">
-        <div id="main__ga" class="rounded-2xl overflow-hidden shadow-xl light-bg">
-          <section id="displayer" class="grid place-content-center py-24 px-5 text-center">
+        <div id="main__ga" class="rounded-md overflow-hidden shadow-xl light-bg">
+          <section id="displayer" class="grid place-content-center md:py-20 sm:py-14 py-10 md:px-5 px-3 text-center">
             <h3 style="font-size: 1.4rem">Sentence</h3>
-            <p id="randword__displayer">Click the start button and focus your cursor on the "Type here..." box</p>
+            <p id="randword__displayer" class="md:my-5 my-3">
+              Click the start button and focus your cursor on the "Type here..." box
+            </p>
 
             <div id="play__time">
-              <button id="start__btn">Start</button>
+              <button
+                id="start__btn"
+                class="px-4 py-2 border border-cyan-700 duration-200 hover:bg-cyan-700 hover:text-white font-semibold"
+              >
+                Start
+              </button>
               <!-- <button id="refresh__btn">Refresh</button> -->
             </div>
 
-            <div style="margin-top: 20px">
-              <h3 style="font-size: 3rem" id="countdown"></h3>
+            <div class="mt-5">
+              <h3 id="countdown" class="text-3xl md:text-4xl font-extrabold"></h3>
             </div>
           </section>
-          <div id="player__v__bot">
+          <div id="player__v__bot" class="grid md:grid-cols-2 grid-cols-1 gap-1 md:gap-0">
             <section id="bot__">
               <div>
-                <div id="botheader">
-                  <div style="width: 40px; border-radius: 9999px; overflow: hidden">
+                <div id="botheader" class="flex items-center px-3 py-1 rounded-t-md">
+                  <div class="rounded-full overflow-hidden w-10">
                     <img src="/images/bot.png" alt="Bot Image" width="100%" height="100%" />
                   </div>
 
-                  <h3>Typimon</h3>
+                  <h3 class="text-center ml-auto">Typimon</h3>
                 </div>
 
                 <div id="botbody">
-                  <p style="padding: 10px">
+                  <p style="padding: 10px" class="p-2">
                     <span style="color: gray">Typimon: _<span id="__bot__type"></span></span>
                   </p>
                 </div>
@@ -67,24 +74,23 @@
 
             <section id="player__">
               <div>
-                <div id="playerheader">
-                  <div style="width: 40px; border-radius: 50%; overflow: hidden">
+                <div id="playerheader" class="flex items-center px-3 py-1 rounded-t-md">
+                  <div class="w-10 rounded-full overflow-hidden">
                     <img src="/images/user.png" alt="Bot Image" width="100%" height="100%" />
                   </div>
 
-                  <h3>You</h3>
+                  <h3 class="text-center ml-auto">You</h3>
                 </div>
 
-                <div id="playerbody">
+                <div id="playerbody" class="w-full">
                   <div>
                     <textarea
                       name="playerInput"
                       id="playerInput"
-                      cols="30"
-                      rows="10"
+                      rows="5"
                       style="resize: none"
                       placeholder="Type here..."
-                      class="focus:outline-none active:outline-none border-2 border-transparent focus:border-gray-600 active:border-gray-600 duration-200"
+                      class="focus:outline-none bg-inherit w-full p-2 active:outline-none border-2 border-transparent focus:border-gray-600 active:border-gray-600 duration-200"
                     ></textarea>
                     <button id="finish__btn" disabled>Finish</button>
                   </div>
@@ -100,6 +106,13 @@
               <span>Status</span>
               <p id="status-text" class="text-lg font-bold text-[#adff2f]">Good</p>
             </div>
+
+            <!-- Special Status Indicator -->
+            <span
+              class="rounded-md p-2 fixed top-1/2 cursor-default right-0 md:hidden max-w-[40px] border-2 grid place-content-center border-gray-600 max-h-[40px] bg-gray-700 shadow-md stat-indicator"
+              >✅</span
+            >
+
             <div class="light-bg rounded-md p-2 duration-200 hover:rounded-lg text-center">
               <h3>Time Elapsed</h3>
               <p id="time-displayer"><span id="min__display">00</span> : <span id="sec__display">00</span></p>
