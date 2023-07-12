@@ -7,9 +7,6 @@
     <link rel="stylesheet" href="/css/shared.css" />
     <link rel="stylesheet" href="/css/play.css" />
     <link rel="stylesheet" href="/dist/output.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;600&display=swap" rel="stylesheet" />
     <script src="/js/jquery-min.js" defer></script>
     <script src="/js/play.js" defer></script>
     <title>Typimon - Practice</title>
@@ -23,8 +20,8 @@
           <nav id="navbar">
             <ul class="flex items-center space-x-4">
               <li><a href="/" class="nav-links">Home</a></li>
-              <li><a href="/pages/play.html" class="nav-links">Play</a></li>
-              <li><a href="#" class="nav-links">Developer</a></li>
+              <li><a href="/pages/play.html" class="nav-links">Play 🚀</a></li>
+              <li><a href="#" class="nav-links">Developer ⚗</a></li>
             </ul>
           </nav>
         </div>
@@ -33,7 +30,7 @@
 
     <main>
       <div id="root" class="max-w-[1024px] mx-auto">
-        <div id="main__ga" class="rounded-2xl overflow-hidden shadow-2xl">
+        <div id="main__ga" class="rounded-2xl overflow-hidden shadow-xl bg-slate-800">
           <section id="displayer">
             <h3 style="font-size: 1.4rem">Word</h3>
             <p id="randword__displayer">Click the start button and focus your cursor on the "Type here..." box</p>
@@ -86,6 +83,7 @@
                       rows="10"
                       style="resize: none"
                       placeholder="Type here..."
+                      class="focus:outline-none active:outline-none border-2 border-transparent focus:border-slate-600 active:border-slate-600 duration-200"
                     ></textarea>
                     <button id="finish__btn" disabled>Finish</button>
                   </div>
@@ -96,18 +94,20 @@
         </div>
 
         <aside id="side-bar">
-          <div id="status-box">
-            <span>Status</span>
-            <p id="status-text">Good</p>
-          </div>
-          <div>
-            <h3>Time Elapsed</h3>
-            <p id="time-displayer"><span id="min__display">00</span> : <span id="sec__display">00</span></p>
-          </div>
-          <div id="slider-box">
-            <h3>Adjust Typing Speed</h3>
-            <input type="range" name="typimonSpeed" id="typimonSpeed" min="0" max="900" step="100" value="300" />
-            <p>WPM: <span id="wpm__text">--</span></p>
+          <div class="space-y-4">
+            <div id="status-box" class="bg-slate-700 rounded-md p-2 duration-200 hover:rounded-lg text-center">
+              <span>Status</span>
+              <p id="status-text" class="text-lg font-bold text-[#adff2f]">Good</p>
+            </div>
+            <div class="bg-slate-700 rounded-md p-2 duration-200 hover:rounded-lg text-center">
+              <h3>Time Elapsed</h3>
+              <p id="time-displayer"><span id="min__display">00</span> : <span id="sec__display">00</span></p>
+            </div>
+            <div id="slider-box" class="bg-slate-700 rounded-md p-2 duration-200 hover:rounded-lg text-center">
+              <h3>Adjust Typing Speed</h3>
+              <input type="range" name="typimonSpeed" id="typimonSpeed" min="0" max="900" step="100" value="500" />
+              <p>WPM: <span id="wpm__text">--</span></p>
+            </div>
           </div>
         </aside>
       </div>

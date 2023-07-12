@@ -107,19 +107,6 @@
   color: rgb(0, 98, 154);
 }
 
-#side-bar > div {
-  margin-bottom: 20px;
-
-  padding: 10px 20px;
-
-  background-color: rgb(48, 48, 48);
-  transition: 0.4s;
-  text-align: center;
-
-  width: 100%;
-  border-radius: 10px;
-  box-shadow: 4px 4px 10px #00010894;
-}
 
 #status-box.playerError {
   width: auto;
