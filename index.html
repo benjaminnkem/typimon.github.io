@@ -6,27 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/css/typimon.css" />
     <link rel="stylesheet" href="/css/shared.css" />
-    <link rel="stylesheet" href="/dist/output.css">
+    <link rel="stylesheet" href="/dist/output.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;600&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;600&display=swap" rel="stylesheet" />
     <script src="/js/jquery-min.js" defer></script>
     <script src="/js/typimon.js" defer></script>
     <title>Typimon - The Typing Bot</title>
   </head>
   <body>
     <header>
-      <div id="headder">
-        <div id="head-nav">
-          <h1 id="logo"><a href="/index.html">Typimon</a></h1>
+      <div>
+        <div class="flex justify-between items-center max-w-[1024px] mx-auto py-8">
+          <h1 id="logo" class="text-2xl font-semibold font-mono"><a href="/index.html">Typimon</a></h1>
 
           <nav id="navbar">
-            <ul>
-              <li><a href="" class="nav-links">Home</a></li>
-              <li><a href="" class="nav-links">Developers</a></li>
+            <ul class="flex items-center space-x-4">
+              <li><a href="/" class="nav-links">Home</a></li>
+              <li><a href="/pages/play.html" class="nav-links">Play</a></li>
+              <li><a href="#" class="nav-links">Developer</a></li>
             </ul>
           </nav>
         </div>
@@ -48,7 +46,7 @@
         <section id="__intro__section">
           <div id="typercon" style="padding-block: 100px" class="__rootcon">
             <h3 style="padding: 20px 0; font-size: 3rem">About Typimon</h3>
-            <p></p>
+            <p id="typimonInfo"></p>
           </div>
         </section>
       </div>

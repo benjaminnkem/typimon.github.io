@@ -1,18 +1,9 @@
 #root {
-  width: 80%;
-
   display: grid;
   grid-template-columns: 5fr 2fr;
   gap: 1rem;
-  margin: 0 auto 50px auto;
 }
 
-#main__ga {
-  border-radius: 10px;
-  overflow: hidden;
-
-  box-shadow: 4px 4px 10px #00010894;
-}
 
 #side-bar {
   align-self: end;
@@ -72,10 +63,6 @@
 
 #botbody p {
   line-height: 25px;
-}
-
-#__bot__type {
-  user-select: none;
 }
 
 #player__ {
@@ -195,6 +182,7 @@
 #statsUserimg {
   padding: 20px;
 }
+
 #statsUserimg img {
   margin-inline: auto;
 }
