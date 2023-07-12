@@ -9,7 +9,7 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --primary-text-color: #fff;
-    --primary-background-color: #0f172a;
+    --primary-background-color: #121212;
 
     --accent-color: rgb(0, 197, 228);
     --accent-color-light: rgb(2, 213, 246);
@@ -43,4 +43,17 @@ footer {
   100% {
     border-right: 2px solid transparent;
   }
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(74, 74, 74, 0.417);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to top, cyan, gray);
+  border-radius: 10px;
 }

@@ -10,3 +10,11 @@
     border-right: 2px solid transparent;
   }
 }
+
+#typimon {
+  font-size: 5rem;
+  background: -webkit-linear-gradient(45deg, #eee, purple, cyan);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
