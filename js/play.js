@@ -1,3 +1,5 @@
+window.addEventListener("contextmenu", (e) => e.preventDefault());
+
 // Global variables
 let finished = false;
 

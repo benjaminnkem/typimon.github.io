@@ -1,9 +1,6 @@
 #root {
-  display: grid;
   grid-template-columns: 5fr 2fr;
-  gap: 1rem;
 }
-
 
 #side-bar {
   align-self: end;
@@ -11,10 +8,6 @@
 }
 
 #displayer {
-  display: grid;
-  place-content: center;
-  padding: 100px 20px;
-  text-align: center;
   background-color: var(--primary-background-gray);
 }
 
@@ -24,7 +17,8 @@
   line-height: 25px;
   margin: 20px 0;
 
-  /* user-select: none; */
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 #play__time button {
@@ -107,13 +101,12 @@
   color: rgb(0, 98, 154);
 }
 
-
 #status-box.playerError {
   width: auto;
   height: auto;
 
   overflow: auto;
-  transform: scale(1.1);
+  transform: scale(1.07);
 }
 
 #status-box span {
@@ -165,4 +158,8 @@
 
 #stats__ > p {
   margin: 10px 0;
+}
+
+.light-bg {
+  background: var(--bg-color-light);
 }

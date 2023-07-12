@@ -14,7 +14,7 @@
   <body>
     <header>
       <div>
-        <div class="flex justify-between items-center max-w-[1024px] mx-auto py-8">
+        <div class="flex justify-between items-center md:max-w-[1024px] w-11/12 mx-auto py-8">
           <h1 id="logo" class="text-2xl font-semibold font-mono"><a href="/index.html">Typimon</a></h1>
 
           <nav id="navbar">
@@ -29,38 +29,40 @@
     </header>
     <main>
       <div>
-        <section id="challenge__word" class="bg-[#191919]">
-          <div class="max-w-[1024px] mx-auto min-h-[20rem] grid grid-cols-2 gap-4">
+        <section id="challenge__word" class="dark:bg-[#191919]">
+          <div class="md:max-w-[1024px] w-11/12 mx-auto min-h-[24rem] grid grid-cols-1 md:grid-cols-2 items-center gap-4">
             <div class="flex items-center">
-              <div class="space-y-2">
+              <div class="space-y-7 text-center md:text-start mx-auto md:mx-0">
                 <div>
                   <p class="font-extrabold tracking-wider" id="typimon">Typimon</p>
-                  <p class="text-2xl">Test your typing skills 🎯🧘👨‍🏭</p>
+                  <p class="text-2xl opacity-75">Test your typing skills 🎯🧘👨‍🏭</p>
                 </div>
 
                 <div>
-                  <a id="get__started" href="/pages/play.html">Let's Go!</a>
+                  <a href="/pages/play.html">
+                    <button class="duration-200 bg-[#2b2b2b] hover:bg-[#242424] px-4 py-2 rounded-md">Let's Go!</button>
+                  </a>
                 </div>
               </div>
             </div>
 
-            <div></div>
+            <div class="text-center md:block hidden">
+              <p></p>
+            </div>
           </div>
         </section>
 
-        <section id="__intro__section" class="max-w-[1024px] mx-auto">
-          <div>
-            <h3 style="padding: 20px 0; font-size: 3rem">About Typimon</h3>
-            <p id="typimonInfo" class="inline-block"></p>
+        <section id="__intro__section" class="md:max-w-[1024px] w-11/12 mx-auto">
+          <div class="mt-10">
+            <h3 class="py-3 text-4xl font-bold">About Typimon</h3>
+            <p class="inline-block"><span id="typimonInfo"></span></p>
           </div>
         </section>
       </div>
     </main>
 
-    <div style="height: 400px"></div>
-
     <footer>
-      <p>Typimon PLC &copy; 2022</p>
+      <p>&copy;Typimon 2022 - 2023, by Nkem Benjamin 💖</p>
     </footer>
   </body>
 </html>

@@ -18,3 +18,14 @@
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
+@media (max-width: 768px) {
+  #typimon {
+    font-size: 3rem;
+  }
+}
+
+#challenge__word {
+  background: url("/images/bg.svg") no-repeat center;
+  background-size: cover;
+}

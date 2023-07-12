@@ -1,7 +1,5 @@
-const typingCon = $("#typercon p");
-let wordToType = `Typimon is a basic typing AI built by Nkem Benjamin that generates random words that 
-challenges your typing speed and consistency which helps 
-improves your typing skills`;
+const typingCon = $("#typimonInfo");
+let wordToType = `Typimon, the brainchild of Nkem Benjamin, is a cutting-edge typing AI that generates random words to test and enhance your typing speed and consistency. It's a powerful tool for improving your typing skills.`;
 
 let gottenWord = "";
 

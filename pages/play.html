@@ -14,7 +14,7 @@
   <body>
     <header>
       <div>
-        <div class="flex justify-between items-center max-w-[1024px] mx-auto py-8">
+        <div class="flex justify-between items-center md:max-w-[1024px] w-11/12 mx-auto py-8">
           <h1 id="logo" class="text-2xl font-semibold font-mono"><a href="/index.html">Typimon</a></h1>
 
           <nav id="navbar">
@@ -29,10 +29,10 @@
     </header>
 
     <main>
-      <div id="root" class="max-w-[1024px] mx-auto">
-        <div id="main__ga" class="rounded-2xl overflow-hidden shadow-xl bg-gray-800">
-          <section id="displayer">
-            <h3 style="font-size: 1.4rem">Word</h3>
+      <div id="root" class="md:max-w-[1024px] w-11/12 mx-auto block md:grid gap-4">
+        <div id="main__ga" class="rounded-2xl overflow-hidden shadow-xl light-bg">
+          <section id="displayer" class="grid place-content-center py-24 px-5 text-center">
+            <h3 style="font-size: 1.4rem">Sentence</h3>
             <p id="randword__displayer">Click the start button and focus your cursor on the "Type here..." box</p>
 
             <div id="play__time">
@@ -57,8 +57,7 @@
 
                 <div id="botbody">
                   <p style="padding: 10px">
-                    <span style="color: gray">Output:</span>
-                    <span id="__bot__type"></span>
+                    <span style="color: gray">Typimon: _<span id="__bot__type"></span></span>
                   </p>
                 </div>
               </div>
@@ -93,17 +92,17 @@
           </div>
         </div>
 
-        <aside id="side-bar">
+        <aside id="side-bar" class="mt-4 md:mt-0">
           <div class="space-y-4">
-            <div id="status-box" class="bg-gray-700 rounded-md p-2 duration-200 hover:rounded-lg text-center">
+            <div id="status-box" class="light-bg rounded-md p-2 duration-200 hover:rounded-lg text-center">
               <span>Status</span>
               <p id="status-text" class="text-lg font-bold text-[#adff2f]">Good</p>
             </div>
-            <div class="bg-gray-700 rounded-md p-2 duration-200 hover:rounded-lg text-center">
+            <div class="light-bg rounded-md p-2 duration-200 hover:rounded-lg text-center">
               <h3>Time Elapsed</h3>
               <p id="time-displayer"><span id="min__display">00</span> : <span id="sec__display">00</span></p>
             </div>
-            <div id="slider-box" class="bg-gray-700 rounded-md p-2 duration-200 hover:rounded-lg text-center">
+            <div id="slider-box" class="light-bg rounded-md p-2 duration-200 hover:rounded-lg text-center">
               <h3>Adjust Typing Speed</h3>
               <input type="range" name="typimonSpeed" id="typimonSpeed" min="0" max="900" step="100" value="500" />
               <p>WPM: <span id="wpm__text">--</span></p>
@@ -137,7 +136,7 @@
     </main>
 
     <footer>
-      <p>Typimon PLC &copy; 2022</p>
+      <p>&copy;Typimon 2022 - 2023, by Nkem Benjamin 💖</p>
     </footer>
   </body>
 </html>
