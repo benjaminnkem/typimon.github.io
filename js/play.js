@@ -2,28 +2,27 @@
 let finished = false;
 
 async function getWordData() {
-  const fetcher = fetch("/rand_data/random.json");
-  const response = (await fetcher).json();
+  try {
+    const response = await fetch("/rand_data/random.json");
+    const data = await response.json();
 
-  response
-    .then((data) => {
-      typimonCode(data);
-    })
-    .catch((err) => {
-      throw err;
-    });
+    if (!response.ok) return;
+    typimonCode(data);
+  } catch (err) {
+    console.log(err);
+  }
 }
 
 // Global time
 let secondsCounter = 0;
 let minutesCounter = 0;
+let timeManagerInterval;
 
 function timeManager() {
   const secDisplay = $("#sec__display");
   const minDisplay = $("#min__display");
 
-  // Bug Here: The time still counts even when the challenge ends
-  let timeManagerInterval;
+  // Bug Here: The time still counts even when the challenge ends: FIXED!
   if (!finished) {
     timeManagerInterval = setInterval(() => {
       if (secondsCounter < 10) {
@@ -79,8 +78,7 @@ function typimonCode(data) {
   let speed = 1000 - speedSlider.value;
   let wpm = (1000 / speed) * 60;
 
-  // Trying to give palyers a time to get ready
-
+  // Trying to give users time to get ready
   let testSpeed = 5000;
   setTimeout(() => {
     function mainBotFunction() {
@@ -109,15 +107,15 @@ function typimonCode(data) {
         if (!playerFinished) {
           winStatus = "You Lose!";
           finished = true;
+          clearInterval(timeManagerInterval);
+          const finishedTime = `${minutesCounter}mins ${secondsCounter}secs`;
 
           $("#playerInput").attr("disabled", "true");
           $("#finishedchallenge__con").addClass("playerFinished");
           $("#win_stat").text(winStatus);
           $("#error_stat").text(numOfErrors);
-          $("#time_stat").text(`${minutesCounter}mins ${secondsCounter}secs`);
-        } else {
-          return;
-        }
+          $("#time_stat").text(finishedTime);
+        } else return; // Do nothing here
       }
 
       speed = 1000 - speedSlider.value;
@@ -160,10 +158,7 @@ function typimonCode(data) {
         const finishBtn = $("#finish__btn");
 
         // This wont enable the button if typimon finishes first and matches given word
-        if (
-          !typimonFinished &&
-          playerInput.value.toLowerCase() === indexOfGeneratedWord.toLowerCase()
-        ) {
+        if (!typimonFinished && playerInput.value.toLowerCase() === indexOfGeneratedWord.toLowerCase()) {
           finishBtn.removeAttr("disabled");
 
           finishBtn.on("click", () => {
