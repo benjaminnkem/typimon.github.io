@@ -3,6 +3,9 @@ window.addEventListener("contextmenu", (e) => e.preventDefault());
 // Global variables
 let finished = false;
 
+// Slider that controls the speed variable
+const speedSlider = document.getElementById("typimonSpeed");
+
 async function getWordData() {
   try {
     const response = await fetch("/rand_data/random.json");
@@ -14,6 +17,21 @@ async function getWordData() {
     console.log(err);
   }
 }
+
+function getWpm() {
+  let speed = 1000 - speedSlider.value;
+  let wpm = (1000 / speed) * 60;
+
+  speedSlider.addEventListener("change", () => {
+    speed = 1000 - speedSlider.value;
+    wpm = (1000 / speed) * 60;
+    $("#wpm__text").text(Math.round(wpm));
+  });
+
+  $("#wpm__text").text(Math.round(wpm));
+}
+
+getWpm();
 
 // Global time
 let secondsCounter = 0;
@@ -70,11 +88,7 @@ function typimonCode(data) {
   let numOfErrors = 0;
   let winStatus;
 
-  // Slider section that controls the speed variable
-  const speedSlider = document.getElementById("typimonSpeed");
-
-  let speed = 1000 - speedSlider.value;
-  let wpm = (1000 / speed) * 60;
+  let speed, wpm;
 
   // Trying to give users time to get ready
   let testSpeed = 5000;
@@ -139,8 +153,8 @@ function typimonCode(data) {
         $("#status-text").css("color", "greenyellow");
         $("#status-text").text("Good");
 
-        $(".stat-indicator").text("✅")
-        $(".stat-indicator").removeClass("animate-bounce")
+        $(".stat-indicator").text("✅");
+        $(".stat-indicator").removeClass("animate-bounce");
       } else {
         // This gets executed when the player input don't match (ERROR)
         numOfErrors++;
@@ -149,9 +163,8 @@ function typimonCode(data) {
         $("#status-text").css("color", "red");
         $("#status-text").text("Word Mismatch!");
 
-        
-        $(".stat-indicator").addClass("animate-bounce")
-        $(".stat-indicator").text("❌")
+        $(".stat-indicator").addClass("animate-bounce");
+        $(".stat-indicator").text("❌");
       }
 
       if (playerInput.value.length == playerInput.getAttribute("maxlength")) {

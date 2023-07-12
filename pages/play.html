@@ -42,7 +42,7 @@
             <div id="play__time">
               <button
                 id="start__btn"
-                class="px-4 py-2 border border-cyan-700 duration-200 hover:bg-cyan-700 hover:text-white font-semibold"
+                class="px-4 py-2 border border-cyan-700 duration-200 hover:bg-cyan-700 hover:text-white rounded font-semibold"
               >
                 Start
               </button>
@@ -66,7 +66,7 @@
 
                 <div id="botbody">
                   <p style="padding: 10px" class="p-2">
-                    <span style="color: gray">Typimon: _<span id="__bot__type"></span></span>
+                    <span class="text-gray-500 inline-block">Typimon: <span id="__bot__type"></span></span>
                   </p>
                 </div>
               </div>
@@ -119,8 +119,9 @@
             </div>
             <div id="slider-box" class="light-bg rounded-md p-2 duration-200 hover:rounded-lg text-center">
               <h3>Adjust Typing Speed</h3>
-              <input type="range" name="typimonSpeed" id="typimonSpeed" min="0" max="900" step="100" value="500" />
+              <input type="range" name="typimonSpeed" id="typimonSpeed" min="0" max="950" step="50" value="500" />
               <p>WPM: <span id="wpm__text">--</span></p>
+              <span class="text-xs opacity-60 -mt-1">*Word per minute*</span>
             </div>
           </div>
         </aside>
